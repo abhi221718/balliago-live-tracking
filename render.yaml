@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: balliago-api-abhi221718
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_ORIGINS
+        value: https://balliago.onrender.com,http://localhost:5173,http://localhost:8081
+      - key: CAPTAIN_SEARCH_RADIUS_METERS
+        value: "5000"
+
+  - type: web
+    name: balliago
+    runtime: static
+    rootDir: web
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://balliago-api-abhi221718.onrender.com

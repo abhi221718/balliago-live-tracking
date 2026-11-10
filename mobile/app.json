@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "BalliaGo",
+    "slug": "balliago",
+    "version": "1.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.balliago.app",
+      "config": { "googleMapsApiKey": "YOUR_IOS_GOOGLE_MAPS_API_KEY" },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "BalliaGo uses your location to set pickup points and show rides.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "BalliaGo uses location during an active captain trip to share trip progress."
+      }
+    },
+    "android": {
+      "package": "com.balliago.app",
+      "config": { "googleMaps": { "apiKey": "YOUR_ANDROID_GOOGLE_MAPS_API_KEY" } },
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
+    },
+    "plugins": [
+      ["expo-location", {
+        "locationWhenInUsePermission": "Allow BalliaGo to use your location for pickup and ride tracking."
+      }]
+    ]
+  }
+}
